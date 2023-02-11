@@ -4,9 +4,8 @@ public class StatsService {
 
     public int getSumSales(int[] total) {  //Сумма всех продаж
         int sum = 0;
-        int arr[] = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        for (int i = 0; i < arr.length; i++) {
-            sum += arr[i];
+        for (int sales : total) {
+            sum = sum + sales;
         }
         return sum;
     }
@@ -44,8 +43,9 @@ public class StatsService {
 
     public int getUnderAverageSale(int[] sales) { //Месяцы с продажами ниже среднего
         int underAverage = 0;
+        int average = getAverageSum(sales);
         for (int sale : sales) {
-            if (sale < getAverageSum(sales)) {
+            if (sale < average) {
                 underAverage += 1;
             }
         }
@@ -53,8 +53,9 @@ public class StatsService {
     }
     public int getOverAverageSale(int[] sales) { // Месяцы с продажами выше среднего
         int overAverage = 0;
+        int average = getAverageSum(sales);
         for (int sale : sales) {
-            if (sale > getAverageSum(sales)) {
+            if (sale > average) {
                 overAverage += 1;
             }
         }
